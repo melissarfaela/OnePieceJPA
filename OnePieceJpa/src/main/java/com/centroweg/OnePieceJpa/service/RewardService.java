@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class RewardService {
-    private RewardRepository rewardRepository;
-    private RewardMapper rewardMapper;
+    private final RewardRepository rewardRepository;
+    private final RewardMapper rewardMapper;
 
     public RewardResponseDto registerReward(RewardRequestDto rewardRequestDto){
         Reward reward = rewardMapper.forEntity(rewardRequestDto);

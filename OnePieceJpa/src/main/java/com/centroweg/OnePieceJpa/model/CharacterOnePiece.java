@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "personagem")
+@Table(name = "character_one_piece")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CharacterOnePiece {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
