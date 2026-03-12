@@ -2,7 +2,7 @@ package com.centroweg.OnePieceJpa.mapper;
 
 import com.centroweg.OnePieceJpa.dto.character.CharacterRequestDto;
 import com.centroweg.OnePieceJpa.dto.character.CharacterResponseDto;
-import com.centroweg.OnePieceJpa.model.Character;
+import com.centroweg.OnePieceJpa.model.CharacterOnePiece;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,15 +11,15 @@ import java.util.List;
 @Component
 public class CharacterMapper {
 
-    public Character forEntity(CharacterRequestDto dto){
-        return new Character(
+    public CharacterOnePiece forEntity(CharacterRequestDto dto){
+        return new CharacterOnePiece(
                 dto.name(),
                 dto.occupation(),
                 dto.crewName()
         );
     }
 
-    public CharacterResponseDto forResponseDto(Character character){
+    public CharacterResponseDto forResponseDto(CharacterOnePiece character){
         return new CharacterResponseDto(
                 character.getId(),
                 character.getName(),
@@ -28,9 +28,9 @@ public class CharacterMapper {
         );
     }
 
-    public List<CharacterResponseDto> forListResponseDto(List<Character> characters){
+    public List<CharacterResponseDto> forListResponseDto(List<CharacterOnePiece> characters){
         List<CharacterResponseDto> list = new ArrayList<>();
-        for(Character character : characters){
+        for(CharacterOnePiece character : characters){
             list.add(forResponseDto(character));
         }
         return list;

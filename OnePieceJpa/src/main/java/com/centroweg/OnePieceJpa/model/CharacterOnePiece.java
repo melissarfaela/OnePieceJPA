@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Character {
+public class CharacterOnePiece {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -24,7 +24,7 @@ public class Character {
     @Column(nullable = false)
     private String crewName;
 
-    public Character(String name, String occupation, String crewName) {
+    public CharacterOnePiece(String name, String occupation, String crewName) {
         this.name = name;
         this.occupation = occupation;
         this.crewName = crewName;

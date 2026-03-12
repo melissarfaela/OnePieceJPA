@@ -1,0 +1,22 @@
+package com.centroweg.OnePieceJpa.service;
+
+import com.centroweg.OnePieceJpa.dto.island.IslandRequestDto;
+import com.centroweg.OnePieceJpa.dto.island.IslandResponseDto;
+import com.centroweg.OnePieceJpa.mapper.IslandMapper;
+import com.centroweg.OnePieceJpa.model.Island;
+import com.centroweg.OnePieceJpa.repository.IslandRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class IslandService {
+    private final IslandRepository islandRepository;
+    private final IslandMapper islandMapper;
+
+    public IslandResponseDto registerIsland(IslandRequestDto islandRequestDto){
+        Island island = islandMapper.forEntity(islandRequestDto);
+        island = islandRepository.save(island);
+        return islandMapper.forResponseDto(island);
+    }
+}
