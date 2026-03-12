@@ -15,7 +15,6 @@ public class CharacterMapper {
         return new Character(
                 dto.name(),
                 dto.occupation(),
-                dto.reward(),
                 dto.crewName()
         );
     }
@@ -25,7 +24,6 @@ public class CharacterMapper {
                 character.getId(),
                 character.getName(),
                 character.getOccupation(),
-                character.getReward(),
                 character.getCrewName()
         );
     }

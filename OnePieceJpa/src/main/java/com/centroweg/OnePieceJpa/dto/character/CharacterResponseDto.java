@@ -4,7 +4,6 @@ public record CharacterResponseDto(
         Long id,
         String name,
         String occupation,
-        Double reward,
         String crewName
 ) {
 }
