@@ -29,4 +29,11 @@ public class Island {
 
     @Column(nullable = false)
     private String description;
+
+    public Island(String name, String sea, String climate, String description) {
+        this.name = name;
+        this.sea = sea;
+        this.climate = climate;
+        this.description = description;
+    }
 }

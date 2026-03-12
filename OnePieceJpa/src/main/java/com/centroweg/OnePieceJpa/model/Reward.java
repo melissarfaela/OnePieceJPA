@@ -27,4 +27,9 @@ public class Reward {
     @Column(nullable = false)
     private String reason;
 
+    public Reward(String nameWanted, Double value, String reason) {
+        this.nameWanted = nameWanted;
+        this.value = value;
+        this.reason = reason;
+    }
 }

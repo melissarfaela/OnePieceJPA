@@ -28,4 +28,11 @@ public class Ship {
 
     @Column(nullable = false)
     private String crew;
+
+    public Ship(String name, String captain, String type, String crew) {
+        this.name = name;
+        this.captain = captain;
+        this.type = type;
+        this.crew = crew;
+    }
 }

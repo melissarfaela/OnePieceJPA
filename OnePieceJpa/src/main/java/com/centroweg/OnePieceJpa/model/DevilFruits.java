@@ -28,4 +28,11 @@ public class DevilFruits {
 
     @Column(nullable = false)
     private String user;
+
+    public DevilFruits(String name, String type, String power, String user) {
+        this.name = name;
+        this.type = type;
+        this.power = power;
+        this.user = user;
+    }
 }

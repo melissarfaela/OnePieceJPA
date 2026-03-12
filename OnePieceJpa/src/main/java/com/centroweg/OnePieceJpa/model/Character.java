@@ -25,4 +25,11 @@ public class Character {
 
     @Column(nullable = false)
     private String crewName;
+
+    public Character(String name, String occupation, Double reward, String crewName) {
+        this.name = name;
+        this.occupation = occupation;
+        this.reward = reward;
+        this.crewName = crewName;
+    }
 }
