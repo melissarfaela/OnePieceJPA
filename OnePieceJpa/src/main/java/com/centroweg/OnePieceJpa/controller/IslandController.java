@@ -4,10 +4,9 @@ import com.centroweg.OnePieceJpa.dto.island.IslandRequestDto;
 import com.centroweg.OnePieceJpa.dto.island.IslandResponseDto;
 import com.centroweg.OnePieceJpa.service.IslandService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/one_piece/island")
@@ -17,5 +16,10 @@ public class IslandController {
     @PostMapping
     public IslandResponseDto registerIsland(@RequestBody IslandRequestDto islandRequestDto){
         return islandService.registerIsland(islandRequestDto);
+    }
+
+    @GetMapping
+    public List<IslandResponseDto> listAllIslands(){
+        return islandService.listAllIslands();
     }
 }

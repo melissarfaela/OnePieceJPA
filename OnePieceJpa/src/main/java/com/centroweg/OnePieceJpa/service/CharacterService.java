@@ -8,6 +8,8 @@ import com.centroweg.OnePieceJpa.repository.CharacterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CharacterService {
@@ -17,5 +19,9 @@ public class CharacterService {
         CharacterOnePiece character = characterMapper.forEntity(characterRequestDto);
         character = characterRepository.save(character);
         return characterMapper.forResponseDto(character);
+    }
+    public List<CharacterResponseDto> listAllCharacter(){
+        List<CharacterOnePiece> characters = characterRepository.findAll();
+        return characterMapper.forListResponseDto(characters);
     }
 }

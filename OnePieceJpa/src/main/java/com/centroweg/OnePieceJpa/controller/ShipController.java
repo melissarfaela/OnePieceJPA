@@ -4,10 +4,9 @@ import com.centroweg.OnePieceJpa.dto.ship.ShipRequestDto;
 import com.centroweg.OnePieceJpa.dto.ship.ShipResponseDto;
 import com.centroweg.OnePieceJpa.service.ShipService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/one_piece/ship")
@@ -18,5 +17,10 @@ public class ShipController {
     @PostMapping
     public ShipResponseDto registerShip(@RequestBody ShipRequestDto shipRequestDto){
         return shipService.registerShip(shipRequestDto);
+    }
+
+    @GetMapping
+    public List<ShipResponseDto> listAllShips(){
+        return shipService.listAllShips();
     }
 }

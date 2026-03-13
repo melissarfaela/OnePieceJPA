@@ -4,10 +4,9 @@ import com.centroweg.OnePieceJpa.dto.devilfruits.DevilFruitRequestDto;
 import com.centroweg.OnePieceJpa.dto.devilfruits.DevilFruitResponseDto;
 import com.centroweg.OnePieceJpa.service.DevilFruitsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/one_piece/devil_fruits")
@@ -18,5 +17,10 @@ public class DevilFruitController {
     @PostMapping
     public DevilFruitResponseDto registerDevilFruits(@RequestBody DevilFruitRequestDto devilFruitRequestDto){
         return devilFruitsService.registerDevilFruits(devilFruitRequestDto);
+    }
+
+    @GetMapping
+    public List<DevilFruitResponseDto> listAllDevilFruits(){
+        return devilFruitsService.listAllDevilFruits();
     }
 }

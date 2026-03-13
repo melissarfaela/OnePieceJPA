@@ -8,6 +8,8 @@ import com.centroweg.OnePieceJpa.repository.IslandRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class IslandService {
@@ -18,5 +20,10 @@ public class IslandService {
         Island island = islandMapper.forEntity(islandRequestDto);
         island = islandRepository.save(island);
         return islandMapper.forResponseDto(island);
+    }
+
+    public List<IslandResponseDto> listAllIslands(){
+        List<Island> islands = islandRepository.findAll();
+        return islandMapper.forListResponseDto(islands);
     }
 }

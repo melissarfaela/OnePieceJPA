@@ -30,7 +30,7 @@ public class IslandMapper {
         );
     }
 
-    public List<IslandResponseDto> forListresponseDto(List<Island> islands){
+    public List<IslandResponseDto> forListResponseDto(List<Island> islands){
         List<IslandResponseDto> list = new ArrayList<>();
         for (Island island : islands){
             list.add(forResponseDto(island));

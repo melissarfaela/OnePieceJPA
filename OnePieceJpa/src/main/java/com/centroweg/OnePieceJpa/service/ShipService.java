@@ -8,6 +8,8 @@ import com.centroweg.OnePieceJpa.repository.ShipRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ShipService {
@@ -18,5 +20,10 @@ public class ShipService {
         Ship ship = shipMapper.forEntity(shipRequestDto);
         ship = shipRepository.save(ship);
         return shipMapper.forResponseDto(ship);
+    }
+
+    public List<ShipResponseDto> listAllShips(){
+        List<Ship> ships = shipRepository.findAll();
+        return shipMapper.forListResponseDto(ships);
     }
 }

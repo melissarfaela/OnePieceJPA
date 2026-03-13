@@ -8,6 +8,8 @@ import com.centroweg.OnePieceJpa.repository.RewardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RewardService {
@@ -20,4 +22,8 @@ public class RewardService {
         return rewardMapper.forResponseDto(reward);
     }
 
+    public List<RewardResponseDto> listAllRewards(){
+        List<Reward> rewards = rewardRepository.findAll();
+        return rewardMapper.forListResponseDto(rewards);
+    }
 }

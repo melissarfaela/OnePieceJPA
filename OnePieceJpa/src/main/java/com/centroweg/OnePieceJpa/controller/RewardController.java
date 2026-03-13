@@ -4,10 +4,9 @@ import com.centroweg.OnePieceJpa.dto.reward.RewardRequestDto;
 import com.centroweg.OnePieceJpa.dto.reward.RewardResponseDto;
 import com.centroweg.OnePieceJpa.service.RewardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/one_piece/reward")
@@ -18,5 +17,10 @@ public class RewardController {
     @PostMapping
     public RewardResponseDto registerReward(@RequestBody RewardRequestDto rewardRequestDto){
         return rewardService.registerReward(rewardRequestDto);
+    }
+
+    @GetMapping
+    public List<RewardResponseDto> listAllReward(){
+        return rewardService.listAllRewards();
     }
 }

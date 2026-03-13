@@ -8,6 +8,8 @@ import com.centroweg.OnePieceJpa.repository.DevilFruitsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DevilFruitsService {
@@ -19,5 +21,10 @@ public class DevilFruitsService {
         DevilFruits devilFruits = devilFruitsMapper.forEntity(devilFruitRequestDto);
         devilFruits = devilFruitsRepository.save(devilFruits);
         return devilFruitsMapper.forResponseDto(devilFruits);
+    }
+
+    public List<DevilFruitResponseDto> listAllDevilFruits(){
+        List<DevilFruits> devilFruits = devilFruitsRepository.findAll();
+        return devilFruitsMapper.forListResponseDto(devilFruits);
     }
 }
