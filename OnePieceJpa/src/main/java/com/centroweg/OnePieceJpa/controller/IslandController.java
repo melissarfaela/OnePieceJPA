@@ -1,5 +1,6 @@
 package com.centroweg.OnePieceJpa.controller;
 
+import com.centroweg.OnePieceJpa.dto.character.CharacterResponseDto;
 import com.centroweg.OnePieceJpa.dto.island.IslandRequestDto;
 import com.centroweg.OnePieceJpa.dto.island.IslandResponseDto;
 import com.centroweg.OnePieceJpa.service.IslandService;
@@ -21,5 +22,10 @@ public class IslandController {
     @GetMapping
     public List<IslandResponseDto> listAllIslands(){
         return islandService.listAllIslands();
+    }
+
+    @GetMapping("/{id}")
+    public IslandResponseDto searchById(@PathVariable Long id) {
+        return islandService.searchById(id);
     }
 }

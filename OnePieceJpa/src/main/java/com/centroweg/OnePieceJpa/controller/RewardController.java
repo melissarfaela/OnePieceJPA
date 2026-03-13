@@ -1,5 +1,6 @@
 package com.centroweg.OnePieceJpa.controller;
 
+import com.centroweg.OnePieceJpa.dto.character.CharacterResponseDto;
 import com.centroweg.OnePieceJpa.dto.reward.RewardRequestDto;
 import com.centroweg.OnePieceJpa.dto.reward.RewardResponseDto;
 import com.centroweg.OnePieceJpa.service.RewardService;
@@ -22,5 +23,10 @@ public class RewardController {
     @GetMapping
     public List<RewardResponseDto> listAllReward(){
         return rewardService.listAllRewards();
+    }
+
+    @GetMapping("/{id}")
+    public RewardResponseDto searchById(@PathVariable Long id) {
+        return rewardService.searchById(id);
     }
 }

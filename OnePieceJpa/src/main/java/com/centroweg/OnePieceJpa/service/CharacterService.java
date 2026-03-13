@@ -24,4 +24,10 @@ public class CharacterService {
         List<CharacterOnePiece> characters = characterRepository.findAll();
         return characterMapper.forListResponseDto(characters);
     }
+
+    public CharacterResponseDto searchById(Long id){
+        CharacterOnePiece character = characterRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Character does not exist"));
+        return characterMapper.forResponseDto(character);
+    }
 }

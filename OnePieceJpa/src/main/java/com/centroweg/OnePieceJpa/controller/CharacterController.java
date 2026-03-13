@@ -23,4 +23,8 @@ public class CharacterController {
         return characterService.listAllCharacter();
     }
 
+    @GetMapping("/{id}")
+    public CharacterResponseDto searchById(@PathVariable Long id) {
+        return characterService.searchById(id);
+    }
 }

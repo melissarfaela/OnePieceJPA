@@ -26,4 +26,10 @@ public class RewardService {
         List<Reward> rewards = rewardRepository.findAll();
         return rewardMapper.forListResponseDto(rewards);
     }
+
+    public RewardResponseDto searchById(Long id){
+        Reward reward = rewardRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("There is no reward."));
+        return rewardMapper.forResponseDto(reward);
+    }
 }

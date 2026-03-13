@@ -27,4 +27,10 @@ public class DevilFruitsService {
         List<DevilFruits> devilFruits = devilFruitsRepository.findAll();
         return devilFruitsMapper.forListResponseDto(devilFruits);
     }
+
+    public DevilFruitResponseDto searchById(Long id){
+        DevilFruits devilFruits = devilFruitsRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("The Fruit does not exist"));
+        return devilFruitsMapper.forResponseDto(devilFruits);
+    }
 }

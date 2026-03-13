@@ -1,5 +1,6 @@
 package com.centroweg.OnePieceJpa.controller;
 
+import com.centroweg.OnePieceJpa.dto.character.CharacterResponseDto;
 import com.centroweg.OnePieceJpa.dto.ship.ShipRequestDto;
 import com.centroweg.OnePieceJpa.dto.ship.ShipResponseDto;
 import com.centroweg.OnePieceJpa.service.ShipService;
@@ -23,4 +24,10 @@ public class ShipController {
     public List<ShipResponseDto> listAllShips(){
         return shipService.listAllShips();
     }
+
+    @GetMapping("/{id}")
+    public ShipResponseDto searchById(@PathVariable Long id) {
+        return shipService.searchById(id);
+    }
+
 }

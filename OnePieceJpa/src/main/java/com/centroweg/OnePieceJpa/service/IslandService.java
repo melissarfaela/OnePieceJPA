@@ -26,4 +26,10 @@ public class IslandService {
         List<Island> islands = islandRepository.findAll();
         return islandMapper.forListResponseDto(islands);
     }
+
+    public IslandResponseDto searchById(Long id){
+        Island island = islandRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("The island does not exist"));
+        return islandMapper.forResponseDto(island);
+    }
 }

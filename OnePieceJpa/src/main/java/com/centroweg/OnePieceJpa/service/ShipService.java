@@ -26,4 +26,10 @@ public class ShipService {
         List<Ship> ships = shipRepository.findAll();
         return shipMapper.forListResponseDto(ships);
     }
+
+    public ShipResponseDto searchById(Long id){
+        Ship ship = shipRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("The ship does not exist."));
+        return shipMapper.forResponseDto(ship);
+    }
 }
