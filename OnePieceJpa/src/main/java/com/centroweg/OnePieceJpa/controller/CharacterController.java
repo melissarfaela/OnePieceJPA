@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -39,5 +40,39 @@ public class CharacterController {
         characterService.delete(id);
     }
 
+    @GetMapping("/character/name")
+    public CharacterResponseDto searchById(@RequestParam String name) {
+        return characterService.searchByName(name);
+    }
 
+    @GetMapping("/{id}/exists")
+    public boolean characterExists(@PathVariable Long id){
+        return characterService.characterExists(id);
+    }
+
+    @GetMapping("/search/{id}/{name}")
+    public CharacterOnePiece findByIdAndName(
+            @PathVariable Long id,
+            @PathVariable String name) {
+
+        return characterService.findByIdAndName(id, name);
+    }
+
+    @GetMapping("/search/{name}/{email}")
+    public CharacterOnePiece findByNameAndEmail(
+            @PathVariable String name,
+            @PathVariable String email) {
+
+        return characterService.findByNameAndEmail(name, email);
+    }
+
+    @GetMapping("/list/{ids}")
+    public List<CharacterOnePiece> findByIds(@PathVariable String ids) {
+
+        List<Long> idList = Arrays.stream(ids.split(","))
+                .map(Long::parseLong)
+                .toList();
+
+        return characterService.findByIds(idList);
+    }
 }

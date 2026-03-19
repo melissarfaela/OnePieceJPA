@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -48,5 +49,29 @@ public class CharacterService {
         }
 
         throw new RuntimeException("User does not exist");
+    }
+
+    public CharacterResponseDto searchByName(String name){
+        CharacterOnePiece character = characterRepository.findByName(name)
+                .orElseThrow(() -> new RuntimeException("Character does not exist"));
+        return characterMapper.forResponseDto(character);
+    }
+
+    public boolean characterExists(Long id){
+        return characterRepository.existsById(id);
+    }
+
+    public CharacterOnePiece findByIdAndName(Long id, String name) {
+        return characterRepository.findByIdAndName(id, name)
+                .orElseThrow(() -> new RuntimeException("Character not found"));
+    }
+
+    public CharacterOnePiece findByNameAndEmail(String name, String email) {
+        return characterRepository.findByNameAndEmail(name, email)
+                .orElseThrow(() -> new RuntimeException("Character not found"));
+    }
+
+    public List<CharacterOnePiece> findByIds(List<Long> ids) {
+        return characterRepository.findByIdIn(ids);
     }
 }
