@@ -30,4 +30,15 @@ public class CharacterService {
                 .orElseThrow(() -> new RuntimeException("Character does not exist"));
         return characterMapper.forResponseDto(character);
     }
+
+    public CharacterResponseDto updateCharacter(CharacterRequestDto dto, long id) {
+        CharacterOnePiece characterOnePiece = characterRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("User does not exist"));
+
+        characterOnePiece.setName(dto.name());
+        characterOnePiece.setOccupation(dto.occupation());
+        characterOnePiece.setCrewName(dto.crewName());
+
+        return characterMapper.forResponseDto(characterOnePiece);
+    }
 }

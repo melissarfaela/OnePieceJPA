@@ -32,4 +32,15 @@ public class RewardService {
                 .orElseThrow(() -> new RuntimeException("There is no reward."));
         return rewardMapper.forResponseDto(reward);
     }
+
+    public RewardResponseDto updateReward(RewardRequestDto dto, long id){
+        Reward reward = rewardRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User does not exist"));
+
+        reward.setNameWanted(dto.nameWanted());
+        reward.setValue(dto.value());
+        reward.setReason(dto.reason());
+
+        return rewardMapper.forResponseDto(reward);
+    }
 }

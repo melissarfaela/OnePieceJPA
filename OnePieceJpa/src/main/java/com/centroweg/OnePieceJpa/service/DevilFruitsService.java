@@ -1,8 +1,10 @@
 package com.centroweg.OnePieceJpa.service;
 
+import com.centroweg.OnePieceJpa.dto.character.CharacterRequestDto;
 import com.centroweg.OnePieceJpa.dto.devilfruits.DevilFruitRequestDto;
 import com.centroweg.OnePieceJpa.dto.devilfruits.DevilFruitResponseDto;
 import com.centroweg.OnePieceJpa.mapper.DevilFruitsMapper;
+import com.centroweg.OnePieceJpa.model.CharacterOnePiece;
 import com.centroweg.OnePieceJpa.model.DevilFruits;
 import com.centroweg.OnePieceJpa.repository.DevilFruitsRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +33,17 @@ public class DevilFruitsService {
     public DevilFruitResponseDto searchById(Long id){
         DevilFruits devilFruits = devilFruitsRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("The Fruit does not exist"));
+        return devilFruitsMapper.forResponseDto(devilFruits);
+    }
+
+    public DevilFruitResponseDto updateDevilFruits(DevilFruitRequestDto dto, long id){
+        DevilFruits devilFruits = devilFruitsRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User does not exist"));
+        devilFruits.setName(dto.name());
+        devilFruits.setType(dto.type());
+        devilFruits.setPower(dto.power());
+        devilFruits.setUser(dto.user());
+
         return devilFruitsMapper.forResponseDto(devilFruits);
     }
 }

@@ -1,5 +1,6 @@
 package com.centroweg.OnePieceJpa.controller;
 
+import com.centroweg.OnePieceJpa.dto.character.CharacterRequestDto;
 import com.centroweg.OnePieceJpa.dto.character.CharacterResponseDto;
 import com.centroweg.OnePieceJpa.dto.devilfruits.DevilFruitRequestDto;
 import com.centroweg.OnePieceJpa.dto.devilfruits.DevilFruitResponseDto;
@@ -30,5 +31,9 @@ public class DevilFruitController {
         return devilFruitsService.searchById(id);
     }
 
+    @PutMapping("/devil_fruits/{id}")
+    public DevilFruitResponseDto update(@RequestBody DevilFruitRequestDto devilFruitRequestDto, @PathVariable Long id) {
+        return devilFruitsService.updateDevilFruits(devilFruitRequestDto, id);
+    }
 
 }

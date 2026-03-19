@@ -1,5 +1,6 @@
 package com.centroweg.OnePieceJpa.controller;
 
+import com.centroweg.OnePieceJpa.dto.character.CharacterRequestDto;
 import com.centroweg.OnePieceJpa.dto.character.CharacterResponseDto;
 import com.centroweg.OnePieceJpa.dto.island.IslandRequestDto;
 import com.centroweg.OnePieceJpa.dto.island.IslandResponseDto;
@@ -27,5 +28,10 @@ public class IslandController {
     @GetMapping("/{id}")
     public IslandResponseDto searchById(@PathVariable Long id) {
         return islandService.searchById(id);
+    }
+
+    @PutMapping("/island/{id}")
+    public IslandResponseDto update(@RequestBody IslandRequestDto islandRequestDto, @PathVariable Long id) {
+        return islandService.islandUpdate(islandRequestDto, id);
     }
 }

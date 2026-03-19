@@ -32,4 +32,16 @@ public class ShipService {
                 .orElseThrow(() -> new RuntimeException("The ship does not exist."));
         return shipMapper.forResponseDto(ship);
     }
+
+    public ShipResponseDto shipUpdate(ShipRequestDto dto, long id){
+        Ship ship = shipRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User does not exist"));
+
+        ship.setName(dto.name());
+        ship.setCaptain(dto.captain());
+        ship.setType(dto.type());
+        ship.setCrew(dto.crew());
+
+        return shipMapper.forResponseDto(ship);
+    }
 }

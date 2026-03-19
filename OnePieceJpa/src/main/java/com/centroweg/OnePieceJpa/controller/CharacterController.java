@@ -2,6 +2,7 @@ package com.centroweg.OnePieceJpa.controller;
 
 import com.centroweg.OnePieceJpa.dto.character.CharacterRequestDto;
 import com.centroweg.OnePieceJpa.dto.character.CharacterResponseDto;
+import com.centroweg.OnePieceJpa.model.CharacterOnePiece;
 import com.centroweg.OnePieceJpa.service.CharacterService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,4 +28,11 @@ public class CharacterController {
     public CharacterResponseDto searchById(@PathVariable Long id) {
         return characterService.searchById(id);
     }
+
+    @PutMapping("/character/{id}")
+    public CharacterResponseDto update(@RequestBody CharacterRequestDto characterRequestDto, @PathVariable Long id) {
+        return characterService.updateCharacter(characterRequestDto, id);
+    }
+
+
 }
