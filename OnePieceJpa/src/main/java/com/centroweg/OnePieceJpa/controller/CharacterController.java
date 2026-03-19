@@ -34,5 +34,10 @@ public class CharacterController {
         return characterService.updateCharacter(characterRequestDto, id);
     }
 
+    @DeleteMapping("/character/{id}")
+    public void delete(@PathVariable Long id) {
+        characterService.delete(id);
+    }
+
 
 }

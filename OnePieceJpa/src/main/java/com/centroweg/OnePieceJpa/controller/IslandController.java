@@ -34,4 +34,9 @@ public class IslandController {
     public IslandResponseDto update(@RequestBody IslandRequestDto islandRequestDto, @PathVariable Long id) {
         return islandService.islandUpdate(islandRequestDto, id);
     }
+
+    @DeleteMapping("/island/{id}")
+    public void delete(@PathVariable Long id) {
+        islandService.delete(id);
+    }
 }

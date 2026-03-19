@@ -44,4 +44,12 @@ public class ShipService {
 
         return shipMapper.forResponseDto(ship);
     }
+
+    public void delete(Long id){
+        if (shipRepository.existsById(id)){
+            shipRepository.deleteById(id);
+        }
+
+        throw new RuntimeException("User does not exist");
+    }
 }

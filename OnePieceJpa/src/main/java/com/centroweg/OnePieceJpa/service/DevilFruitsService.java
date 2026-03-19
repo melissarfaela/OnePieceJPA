@@ -46,4 +46,12 @@ public class DevilFruitsService {
 
         return devilFruitsMapper.forResponseDto(devilFruits);
     }
+
+    public void delete(Long id){
+        if (devilFruitsRepository.existsById(id)){
+            devilFruitsRepository.deleteById(id);
+        }
+
+        throw new RuntimeException("User does not exist");
+    }
 }

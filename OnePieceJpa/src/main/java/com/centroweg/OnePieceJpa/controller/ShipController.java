@@ -36,4 +36,9 @@ public class ShipController {
         return shipService.shipUpdate(shipRequestDto, id);
     }
 
+    @DeleteMapping("/ship/{id}")
+    public void delete(@PathVariable Long id) {
+        shipService.delete(id);
+    }
+
 }

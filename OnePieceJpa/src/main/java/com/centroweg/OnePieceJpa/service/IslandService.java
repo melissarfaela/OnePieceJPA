@@ -46,4 +46,12 @@ public class IslandService {
 
         return islandMapper.forResponseDto(island);
     }
+
+    public void delete(Long id){
+        if (islandRepository.existsById(id)){
+            islandRepository.deleteById(id);
+        }
+
+        throw new RuntimeException("User does not exist");
+    }
 }

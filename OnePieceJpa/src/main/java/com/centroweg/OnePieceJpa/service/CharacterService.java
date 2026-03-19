@@ -41,4 +41,12 @@ public class CharacterService {
 
         return characterMapper.forResponseDto(characterOnePiece);
     }
+
+    public void delete(Long id){
+        if (characterRepository.existsById(id)){
+            characterRepository.deleteById(id);
+        }
+
+        throw new RuntimeException("User does not exist");
+    }
 }

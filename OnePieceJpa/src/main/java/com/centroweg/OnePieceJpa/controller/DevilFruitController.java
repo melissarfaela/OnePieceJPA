@@ -36,4 +36,9 @@ public class DevilFruitController {
         return devilFruitsService.updateDevilFruits(devilFruitRequestDto, id);
     }
 
+    @DeleteMapping("/devil_fruits/{id}")
+    public void delete(@PathVariable Long id) {
+        devilFruitsService.delete(id);
+    }
+
 }

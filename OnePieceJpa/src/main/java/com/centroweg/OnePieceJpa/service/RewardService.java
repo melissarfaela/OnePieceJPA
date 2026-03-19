@@ -43,4 +43,12 @@ public class RewardService {
 
         return rewardMapper.forResponseDto(reward);
     }
+
+    public void delete(Long id){
+        if (rewardRepository.existsById(id)){
+            rewardRepository.deleteById(id);
+        }
+
+        throw new RuntimeException("User does not exist");
+    }
 }
